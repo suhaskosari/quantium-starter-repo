@@ -11,6 +11,9 @@ df = pd.concat([df0, df1, df2])
 # Filter only Pink Morsels
 df = df[df['product'] == 'pink morsel']
 
+# Remove $ sign from price and convert to float
+df['price'] = df['price'].str.replace('$', '', regex=False).astype(float)
+
 # Calculate sales = quantity x price
 df['sales'] = df['quantity'] * df['price']
 
